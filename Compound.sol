@@ -1,6 +1,18 @@
 //SPDX-License-Identifier: MIT
 pragma solidity >=0.7.0 <0.9.0;
 
+interface cETH {
+    
+    // define functions of COMPOUND we'll be using
+    
+    function mint() external payable; // to deposit to compound
+    function redeem(uint redeemTokens) external returns (uint); // to withdraw from compound
+    
+    //following 2 functions to determine how much you'll be able to withdraw
+    function exchangeRateStored() external view returns (uint); 
+    function balanceOf(address owner) external view returns (uint256 balance);
+}
+
 contract SmartBankAccount {
     //function of the total balance in contract
 
